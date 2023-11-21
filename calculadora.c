@@ -11,7 +11,7 @@ int main(void){
         printf("Seleccione la operacion que desea realizar\n");
         printf("1. Ecuaciones de segundo grado\n");
         printf("2. Multiplicacion de matrices\n");
-        printf("3. Norma, distancia y angulo entre vectores\n");
+        printf("3. Componentes de vectores\n");
         printf("4. Angulos y lados de un triangulo\n");
         printf("5. Salir\n");
         printf("Opcion: ");
@@ -96,6 +96,37 @@ int main(void){
             
             break;
         case 3:
+            float vector1[3];
+            float vector2[3];
+            float vector_diferencia[3];
+            float norma1, norma2, distancia, angulo; 
+            float producto_interno;
+  
+            printf("______Componentes de dos vectores______\n");
+            printf("Escriba los elementos del Vector 1:\n");
+            for(int i = 0; i < 3; i++){
+                printf("Elemento en la posicion %d: ", i+1);
+                scanf("%f", &vector1[i]);
+            }
+
+            printf("Escriba los elementos del Vector 2:\n");
+            for(int i = 0; i < 3; i++){
+                printf("Elemento en la posicion %d: ", i+1);
+                scanf("%f", &vector2[i]);
+            }
+
+            norma1 = calcularNorma(vector1);
+            norma2 = calcularNorma(vector2);
+            distancia = calcularDistancia(vector1, vector2);
+            producto_interno = calcularProductoInterno(vector1, vector2);
+            angulo = calcularAngulo(producto_interno, norma1, norma2);
+  
+            printf("La norma del vector 1 es: %.2f\n", norma1);
+            printf("La norma del vector 2 es: %.2f\n", norma2);
+            printf( "La distancia entre los vectores es: %.2f\n", distancia);
+            printf("El producto interno entre los vectores es: %.2f\n", producto_interno);
+            printf( "El angulo entre los vectores es: %.2f\n", angulo);
+            
             break;
         case 4:
             break;
