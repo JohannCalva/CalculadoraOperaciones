@@ -12,7 +12,7 @@ int main(void){
         printf("1. Ecuaciones de segundo grado\n");
         printf("2. Multiplicacion de matrices\n");
         printf("3. Componentes de vectores\n");
-        printf("4. Angulos y lados de un triangulo\n");
+        printf("4. Calcular determinante de matrices 2x2 y 3x3\n");
         printf("5. Salir\n");
         printf("Opcion: ");
         scanf("%d", &opcion);
@@ -64,22 +64,22 @@ int main(void){
             break;
         case 2:
 
-            int matriz1 [3][3];
-            int matriz2 [3][3];
-            int resultado [3][3];
+            float matriz1 [3][3];
+            float matriz2 [3][3];
+            float resultado [3][3];
             printf("______Multiplicacion de Matrices 3x3______\n");
             printf("Ingrese los elementos de la matriz 1:\n");
             for (int i = 0; i < 3; i++){
                 for(int j = 0; j < 3; j++){
                     printf("Elemento en la posicion [%d][%d]: ", i+1, j+1);
-                    scanf("%d", &matriz1[i][j]);
+                    scanf("%f", &matriz1[i][j]);
                 }
             }  
             printf("Ingrese los elementos de la matriz 2:\n");
             for (int i = 0; i < 3; i++) {
                 for(int j = 0; j < 3; j++){
                     printf("Elemento en la posicion [%d][%d]: ", i+1, j+1);
-                    scanf("%d", &matriz2[i][j]);
+                    scanf("%f", &matriz2[i][j]);
                 }
             }  
 
@@ -129,6 +129,50 @@ int main(void){
             
             break;
         case 4:
+            float matriz33[3][3];
+            float matriz22[2][2];
+            int op_matriz;
+            float determinante;
+            do{
+                printf("\n______Calculadora de Determinantes______\n");
+                printf("Seleccione el tamanio de la matriz: \n");
+                printf("1. Matriz 2x2\n");
+                printf("2. Matriz 3x3\n");
+                printf("3. Salir\n");
+                printf("Opcion: ");
+                scanf("%d", &op_matriz);
+                switch(op_matriz){
+                case 1:
+                    printf("Ingrese los valores de la matriz 2x2:\n");
+                    for(int i = 0; i < 2; i++){
+                        for(int j = 0; j < 2; j++){
+                            printf("Elemento en la posicion: %d, %d: ", i + 1, j + 1);
+                            scanf("%f", &matriz22[i][j]);
+                        }
+                    }
+                    determinante = calcularDeterminante2x2(matriz22);
+                    printf("\nDeterminante: %.2f\n", determinante);
+                    break;
+                case 2:
+                    printf("Ingrese los valores de la matriz 3x3:\n");
+                    for(int i = 0; i < 3; i++){
+                        for(int j = 0; j < 3; j++){
+                            printf("Elemento en la posicion: %d, %d: ", i + 1, j + 1);
+                            scanf("%f", &matriz33[i][j]);
+                        }
+                    }
+                    determinante = calcularDeterminante3x3(matriz33);
+                    printf("\nMatriz 3x3:\n");
+                    imprimirMatriz(matriz33);
+                    printf("\nDeterminante: %.2f\n", determinante);
+                    break;
+                case 3:
+                    break;
+                default:
+                    printf("Opcion invalida.\n");
+                    break;      
+                }
+            }while(op_matriz != 3);
             break;
         case 5:
             printf("Gracias por usar.\n");

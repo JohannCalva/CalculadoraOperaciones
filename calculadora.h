@@ -20,7 +20,7 @@ float calculoResultado2(float p, float q, float r, float disc){
     return r2;
 }
 /*Multiplicacion de Matrices*/
-void multiplicarMatrices(int m1[3][3], int m2[3][3], int r[3][3]){
+void multiplicarMatrices(float m1[3][3], float m2[3][3], float r[3][3]){
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
             r[i][j] = 0;
@@ -31,10 +31,10 @@ void multiplicarMatrices(int m1[3][3], int m2[3][3], int r[3][3]){
     }
 }
 
-void imprimirMatriz(int m[3][3]){
+void imprimirMatriz(float m[3][3]){
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
-            printf("%d\t", m[i][j]);
+            printf("%.0f\t", m[i][j]);
         }
         printf("\n");
     }
@@ -66,6 +66,16 @@ float calcularProductoInterno(float v1[3], float v2[3]){
 float calcularAngulo(float prod_int, float n1, float n2){
     float a = acos(prod_int / (n1 * n2)) * (180/3.1415);
     return a;
+}
+/*Determinantes*/
+float calcularDeterminante2x2(float m[2][2]){
+  float d = (m[0][0]*m[1][1]) - (m[1][0]*m[0][1]);
+  return d;
+}
+
+float calcularDeterminante3x3(float m[3][3]){
+  float d = ((m[0][0] * m[1][1] * m [2][2]) + (m[1][0] * m[2][1] * m[0][2]) + (m[2][0] * m[0][1] * m[1][2])) - ((m[1][0] * m[0][1] * m[2][2]) + (m[0][0] * m[2][1] * m[1][2]) + (m[2][0] * m[1][1] * m[0][2]));
+  return d;
 }
 
 #endif
